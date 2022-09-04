@@ -1,7 +1,7 @@
 title: Eunbyeol Cho
 description: Welcome to my latent space!
 
-url: https://eunbyeol-cho.github.io
+url: "https://eunbyeol-cho.github.io/"
 paginate_path: "blog/page:num/"
 permalink: blog/:title/
 
