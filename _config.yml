@@ -1,7 +1,7 @@
-title: Long Haul
-description: Long Form Jekyll theme built with SASS / COMPASS / SUSY
+title: Eunbyeol Cho
+description: Welcome to my latent space!
 
-url: https://long-haul.netlify.app
+url: https://github.com/eunbyeol-cho/eunbyeol-cho.github.io
 paginate_path: "blog/page:num/"
 permalink: blog/:title/
 
@@ -18,17 +18,17 @@ navigation:
     url: /index.html
   - title: About
     url: /about
-  - title: Contact
-    url: /contact
+  # - title: Contact
+  #   url: /contact
 
-social:
-  github: brianmaierjr
-  twitter: brianmaierjr
-  facebook: brianmaierjr
-  email: brimaidesigns@gmail.com
-  linkedin: brianmaierjr
+# social:
+#   github: brianmaierjr
+#   twitter: brianmaierjr
+#   facebook: brianmaierjr
+#   email: brimaidesigns@gmail.com
+#   linkedin: brianmaierjr
 
-google_analytics: "UA-58263416-1"
+# google_analytics: "UA-58263416-1"
 
-disqus:
-    shortname: brianmaierjr
+# disqus:
+#     shortname: brianmaierjr
