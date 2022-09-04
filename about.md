@@ -20,10 +20,14 @@ title: About
 	<h2>Education</h2>
 	<ul>
   		<li>Korea Advanced Institute of Science and Technology (KAIST), <i>September 2021 - Current</i>
-		<br>M.S. in Artificial Intelligence
-		<br>Advisor: Prof. Edward Choi</li>
+		<ul>
+			<li>M.S. in Artificial Intelligence</li>
+			<li>Advisor: Prof. Edward Choi</li>
+		</ul></li>
 		<li>Ewha Womans University, <i>March 2017 - August 2021</i>
-		<br>B.S. in Mechanical and Biomedical Engineering</li>
+		<ul>
+		<li>B.S. in Mechanical and Biomedical Engineering</li>
+		</ul></li>
   	</ul>
 	<h2>Contact</h2>
 	<ul>
