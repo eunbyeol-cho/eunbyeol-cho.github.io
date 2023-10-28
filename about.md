@@ -11,9 +11,17 @@ title: About
 	<h2>Publication</h2>
 	<ul>
 	<li>
-		*Wonkyeong Lee, *<b>Eunbyeol Cho</b>, Wonjin Kim, Jang-Hwan Choi, <a href="https://www.spiedigitallibrary.org/conference-proceedings-of-spie/12035/0000/Performance-evaluation-of-image-quality-metrics-for-perceptual-assessment-of/10.1117/12.2612541.short?SSO=1">Performance evaluation of image quality metrics for perceptual assessment of low-dose computed tomography images</a>, In Medical Imaging 2022: Image Perception, Observer Performance, and Technology Assessment
+		Kyunghoon Hur, Jungwoo Oh, Junu Kim, Jiyoun Kim, Min Jae Lee, <b>Eunbyeol Cho</b>, Seong-Eun Moon, Young-Hak Kim, Louis Atallah, Edward Choi, 2023, <a href="https://arxiv.org/abs/2207.09858">GenHPF : General Healthcare Predictive Framework for Multi-task Multi-source Learning</a>, <i>Journal of Biomedical and Health Informatics (JBHI)</i>
 	</li><li>
-		*Yejin Jeon, *<b>Eunbyeol Cho</b>, Sehwa Moon, Seung-Hoon Chae, Hae Young Jo, Tae Oh Kim, Chang Mo Moon, Jang-Hwan Choi, <a href="https://www.spiedigitallibrary.org/conference-proceedings-of-spie/11050/110501N/Deep-convolutional-neural-network-based-automated-lesion-detection-in-wireless/10.1117/12.2522159.short">Deep convolutional neural network-based automated lesion detection in wireless capsule endoscopy</a>, In International Forum on Medical Imaging in Asia (IFMIA) 2019
+		Seongsu Bae*, Daeun Kyung*, Jaehee Ryu, <b>Eunbyeol Cho</b>, Gyubok Lee, Sunjun Kweon, Jungwoo Oh, Lei Ji, Eric I-Chao Chang, Tackeun Kim, Edward Choi, 2023, <a href="https://github.com/baeseongsu/ehrxqa">EHRXQA: A Multi-Modal Question Answering Dataset for Electronic Health Records with Chest X-ray Images</a>, <i>Neural Information Processing Systems (NeurIPS) 2023 Datasets and Benchmarks</i>
+	</li><li>
+		<b>Eunbyeol Cho</b>*, Min Jae Lee*, Kyunghoon Hur, Jiyoun Kim, Jinsung Yoon, Edward Choi, 2023, <a href="https://arxiv.org/abs/2303.08290">Rediscovery of CNN's Versatility for Text-based Encoding of Raw Electronic Health Records</a>, <i>Conference on Health, Inference, and Learning (CHIL) 2023 (Oral Presentation)</i>
+	</li><li>
+		Wonkyeong Lee*, <b>Eunbyeol Cho</b>*, Wonjin Kim, Hyebin Choi, Kyongmin Sarah Beck, Hyun Jung Yoon, Jongduk Baek, Jang-Hwan Choi, 2022, <a href="https://iopscience.iop.org/article/10.1088/2632-2153/aca87d/meta">No-reference perceptual CT image quality assessment based on a self-supervised learning framework</a>, <i>Machine Learning: Science and Technology</i>
+	</li><li>
+		Wonkyeong Lee*, <b>Eunbyeol Cho</b>*, Wonjin Kim, Jang-Hwan Choi, 2022, <a href="https://www.spiedigitallibrary.org/conference-proceedings-of-spie/12035/0000/Performance-evaluation-of-image-quality-metrics-for-perceptual-assessment-of/10.1117/12.2612541.short?SSO=1">Performance evaluation of image quality metrics for perceptual assessment of low-dose computed tomography images</a>, <i>Medical Imaging 2022: Image Perception, Observer Performance, and Technology Assessment</i>
+	</li><li>
+		Yejin Jeon*, <b>Eunbyeol Cho</b>*, Sehwa Moon, Seung-Hoon Chae, Hae Young Jo, Tae Oh Kim, Chang Mo Moon, Jang-Hwan Choi, 2019, <a href="https://www.spiedigitallibrary.org/conference-proceedings-of-spie/11050/110501N/Deep-convolutional-neural-network-based-automated-lesion-detection-in-wireless/10.1117/12.2522159.short">Deep convolutional neural network-based automated lesion detection in wireless capsule endoscopy</a>, <i>International Forum on Medical Imaging in Asia (IFMIA 2019)</i>
 	</li>
 	<span style="line-height:250%;"><i>* denotes equal contribution.</i></span>
 	</ul>	
