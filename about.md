@@ -7,7 +7,7 @@ title: About
 <!-- <div> -->
 	<h1 class="pageTitle">About</h1>
 	<img src="{{ '/assets/img/photo.jpg' }}" alt="" style="display: block; margin: 70px auto; width:170px; height:200px;">
-	<p class="intro">I'm a Master's student at <a href="https://gsai.kaist.ac.kr">KAIST Graduate School of AI</a> advised by <a href="https://mp2893.com">Professor Edward Choi</a>. My research interests lie in the areas of Healthcare and Natural Language Processing.</p>
+	<p class="intro">I am a Ph.D. student at <a href="https://gsai.kaist.ac.kr">KAIST Graduate School of AI</a> advised by <a href="https://mp2893.com">Professor Edward Choi</a>. My research interests lie in the areas of Healthcare and Natural Language Processing.</p>
 	<h2>Publication</h2>
 	<ul>
 	<li>
