@@ -1,26 +1,522 @@
----
-layout: default
-title: Eunbyeol Cho
----
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Eunbyeol Cho</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/style.css">
 
-<div class="home" id="home">
-  <h1 class="pageTitle">Recent Posts</h1>
-  <div class="posts noList">
-    {%- for post in paginator.posts -%}
-      <article>
-        <span class="date">{{ post.date | date: '%B %d, %Y' }}</span>
-        <h3><a class="post-link" href="{{ post.url }}">{{ post.title }}</a></h3>
-        <p>{%- if post.description -%}{{ post.description }}{%- else -%}{{ post.excerpt | strip_html }}{%- endif -%}</p>
-      </article>
-    {%- endfor -%}
+  <style>
+    /* Header & navigation layout fix */
+    .header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .header h1 {
+      float: none;
+      padding-left: 0;
+      margin: 0;
+    }
+
+    .header h1 a {
+      text-decoration: none;
+    }
+
+    .nav-collapse {
+      position: static;
+      max-height: none;
+      overflow: visible;
+    }
+
+    .nav-collapse ul {
+      width: auto;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .nav-collapse ul li {
+      width: auto;
+      background: none;
+      border: none;
+      padding: 0;
+    }
+
+    .nav-collapse ul li a {
+      padding: 0;
+      color: #fff;
+      font-size: 0.95em;
+    }
+
+    .nav-collapse ul li.current {
+      border-bottom: 2px solid rgba(255, 255, 255, 0.7);
+      padding-bottom: 0.1rem;
+    }
+
+    /* About layout */
+    .about-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem 0;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95em;
+    }
+
+    .about-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 3rem;
+      margin-bottom: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: none;
+    }
+
+    .about-photo {
+      flex-shrink: 0;
+    }
+
+    .about-photo img {
+      width: 165px;
+      height: 195px;
+      object-fit: cover;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .about-intro {
+      flex: 1;
+    }
+
+    .about-intro h1 {
+      margin: 0 0 1rem 0;
+      font-size: 2.2em;
+      color: #111;
+      font-family: "Open Sans", Helvetica, Arial, sans-serif;
+    }
+
+    .about-intro .intro {
+      font-size: 1em;
+      line-height: 1.6;
+      color: #333;
+      margin-bottom: 1rem;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .profile-links {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+
+    .profile-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #333;
+      text-decoration: none;
+      font-size: 0.9em;
+      transition: color 0.2s ease;
+    }
+
+    .profile-links a:hover {
+      color: seagreen;
+    }
+
+    .profile-links a svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+    }
+
+    .about-section {
+      margin-bottom: 3rem;
+    }
+
+    .about-section h2 {
+      font-size: 1.8em;
+      margin-bottom: 1.5rem;
+      color: #111;
+      border-bottom: 2px solid #e6e6e6;
+      padding-bottom: 0.5rem;
+      font-family: "Open Sans", Helvetica, Arial, sans-serif;
+    }
+
+    .about-section ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .about-section ul li {
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+      padding-left: 0;
+      position: relative;
+    }
+
+    .about-section ul li:before {
+      content: none;
+    }
+
+    /* Common style for all three sections - unified bullet list style */
+    .about-section.publication-section ul,
+    .about-section.education-section ul,
+    .about-section.academic-activities-section ul {
+      list-style: disc;
+      padding-left: 1.2rem;
+      margin: 0;
+    }
+
+    .about-section.publication-section ul li,
+    .about-section.education-section ul li,
+    .about-section.academic-activities-section ul li {
+      margin-bottom: 1rem;
+      padding-left: 0.2rem;
+      font-size: 0.85em;
+      line-height: 1.6;
+      border: none;
+    }
+
+    /* Publication specific content styling */
+    .publication-title {
+      display: block;
+      font-weight: bold;
+      color: seagreen;
+      margin-bottom: 0.2rem;
+      font-size: 0.97em;
+      line-height: 1.5;
+    }
+
+    .publication-title a {
+      color: seagreen;
+      text-decoration: none;
+    }
+
+    .publication-title a:hover {
+      text-decoration: underline;
+    }
+
+    .publication-authors {
+      display: block;
+      margin-bottom: 0.2rem;
+      color: #444;
+      font-size: 0.88em;
+      line-height: 1.5;
+    }
+
+    .publication-venue {
+      display: block;
+      font-style: italic;
+      color: #777;
+      font-size: 0.86em;
+      line-height: 1.5;
+    }
+
+    .equal-contribution {
+      font-style: italic;
+      color: #666;
+      margin: -0.5rem 0 1.2rem 0;
+      font-size: 0.88em;
+    }
+
+    /* Education and Academic Activities content styling */
+    .about-section.education-section ul li strong,
+    .about-section.academic-activities-section ul li strong {
+      font-size: 1em;
+    }
+
+    @media (max-width: 768px) {
+      .about-header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 2rem;
+      }
+
+      .about-photo img {
+        width: 145px;
+        height: 170px;
+      }
+
+      .about-intro h1 {
+        font-size: 1.8em;
+      }
+
+      .about-intro .intro {
+        font-size: 1em;
+      }
+    }
+
+    /* Footer */
+    .footer {
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 2px solid #e6e6e6;
+      border-bottom: none !important;
+    }
+
+    .footer .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+      border-top: none !important;
+      border-bottom: none !important;
+      border: none !important;
+    }
+
+    .footer .container p {
+      text-align: center;
+      color: #777;
+      font-size: 0.85em;
+      margin: 0;
+      padding: 1rem 0;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .footer .container a {
+      color: #777;
+      text-decoration: underline;
+      transition: color 0.2s ease;
+    }
+
+    .footer .container a:hover {
+      color: seagreen;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="container">
+      <h1><a href="/index.html">Eunbyeol Cho</a></h1>
+    </div>
   </div>
-  <!-- Pagination links -->
-  <div class="pagination">
-    {%- if paginator.previous_page -%}
-      <a href="{{ paginator.previous_page_path }}" class="previous button__outline">Newer Posts</a> 
-    {%- endif -%}
-    {%- if paginator.next_page -%}
-      <a href="{{ paginator.next_page_path }}" class="next button__outline">Older Posts</a>
-    {%- endif -%}
+
+  <div class="content">
+    <div class="container">
+      <div class="about-container">
+        <div class="about-header">
+          <div class="about-photo">
+            <img src="/assets/img/photo.jpg" alt="Eunbyeol Cho">
+          </div>
+          <div class="about-intro">
+            <h1>Eunbyeol Cho</h1>
+            <p class="intro">
+              I am a Ph.D. student at
+              <a href="https://gsai.kaist.ac.kr">KAIST Graduate School of AI</a>
+              advised by <a href="https://mp2893.com">Professor Edward Choi</a>.
+              My research interests lie in the areas of Healthcare AI and Natural Language Processing.
+            </p>
+            <div class="profile-links">
+              <a href="https://scholar.google.com/citations?user=AzMWzQoAAAAJ" target="_blank">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/>
+                </svg>
+                Google Scholar
+              </a>
+              <a href="http://github.com/eunbyeol-cho" target="_blank">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                </svg>
+                GitHub
+              </a>
+              <a href="mailto:eunbyeol.cho@kaist.ac.kr">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                </svg>
+                Email
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-section publication-section">
+          <h2>Publication</h2>
+          <p class="equal-contribution">* denotes equal contribution.</p>
+          <ul>
+            <li>
+              <span class="publication-title">
+                <a href="https://arxiv.org/abs/2406.13144">DialSim: A Real-Time Simulator for Evaluating Long-Term Dialogue Understanding of Conversational Agents</a>
+              </span>
+              <span class="publication-authors">
+                Jiho Kim, Woosog Chay, Hyeonji Hwang, Daeun Kyung, Hyunseung Chung, <b>Eunbyeol Cho</b>, Yohan Jo, Edward Choi
+              </span>
+              <span class="publication-venue"><b>Under Review</b></span>
+            </li>
+            <li>
+              <span class="publication-title">
+                Privacy-Preserving Synthetic Data Enhances Postoperative Acute Kidney Injury Prediction in Data-Scarce Clinical Settings: A Multicenter Modeling Study
+              </span>
+              <span class="publication-authors">
+                Soie Kwon*, <b>Eunbyeol Cho</b>*, Minjae Lee, Yissak Kim, Sunah Yang, Jeong Min Cho, Sehoon Park, Chung Hee Baek, Jiwon Ryu, Sejoong Kim, Jeonghwan Lee, Ji In Park, Jin Ho Hwang, Ji Eun Kim, Kwangsoo Kim, Hyeong-Jin Yoon, Edward Choi, Hajeong Lee
+              </span>
+              <span class="publication-venue"><b>Under Review</b></span>
+            </li>
+            <li>
+              <span class="publication-title">
+                <a href="https://arxiv.org/abs/2507.06996">Generating Multi-Table Time Series EHR from Latent Space with Minimal Preprocessing</a>
+              </span>
+              <span class="publication-authors">
+                <b>Eunbyeol Cho</b>, Jiyoun Kim, Minjae Lee, Sungjin Park, Edward Choi
+              </span>
+              <span class="publication-venue">Proceedings of Neural Information Processing Systems (NeurIPS) 2025</span>
+            </li>
+            <li>
+              <span class="publication-title">
+                <a href="https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1004566">
+                  A deep-learning algorithm using real-time collected intraoperative vital sign signals for predicting
+                  acute kidney injury after major non-cardiac surgeries: A modelling study
+                </a>
+              </span>
+              <span class="publication-authors">
+                Sehoon Park*, Soomin Chung*, Yisak Kim, Sun-Ah Yang, Soie Kwon, Jeong Min Cho, Min Jae Lee,
+                <b>Eunbyeol Cho</b>, Jiwon Ryu, Sejoong Kim, Jeonghwan Lee, Hyung Jin Yoon, Edward Choi, Kwangsoo Kim,
+                Hajeong Lee
+              </span>
+              <span class="publication-venue">PLOS Medicine 2025</span>
+            </li>
+            <li>
+              <span class="publication-title">
+                <a href="https://arxiv.org/abs/2309.00237">
+                  Publicly Shareable Clinical Large Language Model Built on Synthetic Clinical Notes
+                </a>
+              </span>
+              <span class="publication-authors">
+                Sunjun Kweon*, Junu Kim*, Jiyoun Kim, Sujeong Im, <b>Eunbyeol Cho</b>, Seongsu Bae, Jungwoo Oh, Gyubok Lee,
+                Jong Hak Moon, Seng Chan You, Seungjin Baek, Chang Hoon Han, Yoon Bin Jung, Yohan Jo, Edward Choi
+              </span>
+              <span class="publication-venue">Findings in Association for Computational Linguistics (ACL) 2024</span>
+            </li>
+            <li>
+              <span class="publication-title">
+                <a href="https://arxiv.org/abs/2207.09858">
+                  GenHPF: General Healthcare Predictive Framework for Multi-task Multi-source Learning
+                </a>
+              </span>
+              <span class="publication-authors">
+                Kyunghoon Hur, Jungwoo Oh, Junu Kim, Jiyoun Kim, Min Jae Lee, <b>Eunbyeol Cho</b>, Seong-Eun Moon,
+                Young-Hak Kim, Louis Atallah, Edward Choi
+              </span>
+              <span class="publication-venue">Journal of Biomedical and Health Informatics (JBHI) 2023</span>
+            </li>
+            <li>
+              <span class="publication-title">
+                <a href="https://github.com/baeseongsu/ehrxqa">
+                  EHRXQA: A Multi-Modal Question Answering Dataset for Electronic Health Records with Chest X-ray Images
+                </a>
+              </span>
+              <span class="publication-authors">
+                Seongsu Bae*, Daeun Kyung*, Jaehee Ryu, <b>Eunbyeol Cho</b>, Gyubok Lee, Sunjun Kweon, Jungwoo Oh,
+                Lei Ji, Eric I-Chao Chang, Tackeun Kim, Edward Choi
+              </span>
+              <span class="publication-venue">Neural Information Processing Systems (NeurIPS) 2023 Datasets and Benchmarks</span>
+            </li>
+            <li>
+              <span class="publication-title">
+                <a href="https://arxiv.org/abs/2303.08290">
+                  Rediscovery of CNN's Versatility for Text-based Encoding of Raw Electronic Health Records
+                </a>
+              </span>
+              <span class="publication-authors">
+                <b>Eunbyeol Cho</b>*, Min Jae Lee*, Kyunghoon Hur, Jiyoun Kim, Jinsung Yoon, Edward Choi
+              </span>
+              <span class="publication-venue">Conference on Health, Inference, and Learning (CHIL) 2023 (<b>Oral Presentation</b>)</span>
+            </li>
+            <li>
+              <span class="publication-title">
+                <a href="https://iopscience.iop.org/article/10.1088/2632-2153/aca87d/meta">
+                  No-reference perceptual CT image quality assessment based on a self-supervised learning framework
+                </a>
+              </span>
+              <span class="publication-authors">
+                Wonkyeong Lee*, <b>Eunbyeol Cho</b>*, Wonjin Kim, Hyebin Choi, Kyongmin Sarah Beck, Hyun Jung Yoon,
+                Jongduk Baek, Jang-Hwan Choi
+              </span>
+              <span class="publication-venue">Machine Learning: Science and Technology 2022</span>
+            </li>
+            <li>
+              <span class="publication-title">
+                <a href="https://www.spiedigitallibrary.org/conference-proceedings-of-spie/12035/0000/Performance-evaluation-of-image-quality-metrics-for-perceptual-assessment-of/10.1117/12.2612541.short?SSO=1">
+                  Performance evaluation of image quality metrics for perceptual assessment of low-dose computed
+                  tomography images
+                </a>
+              </span>
+              <span class="publication-authors">
+                Wonkyeong Lee*, <b>Eunbyeol Cho</b>*, Wonjin Kim, Jang-Hwan Choi
+              </span>
+              <span class="publication-venue">Medical Imaging: Image Perception, Observer Performance, and Technology Assessment 2022</span>
+            </li>
+            <li>
+              <span class="publication-title">
+                <a href="https://www.spiedigitallibrary.org/conference-proceedings-of-spie/11050/110501N/Deep-convolutional-neural-network-based-automated-lesion-detection-in-wireless/10.1117/12.2522159.short">
+                  Deep convolutional neural network-based automated lesion detection in wireless capsule endoscopy
+                </a>
+              </span>
+              <span class="publication-authors">
+                Yejin Jeon*, <b>Eunbyeol Cho</b>*, Sehwa Moon, Seung-Hoon Chae, Hae Young Jo, Tae Oh Kim, Chang Mo Moon,
+                Jang-Hwan Choi
+              </span>
+              <span class="publication-venue">International Forum on Medical Imaging in Asia (IFMIA) 2019</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="about-section education-section">
+          <h2>Education</h2>
+          <ul>
+            <li>
+              <strong>Korea Advanced Institute of Science and Technology (KAIST)</strong><br>
+              <i>September 2023 - Present</i><br>
+              Ph.D. in Artificial Intelligence<br>
+              Advisor: Prof. Edward Choi
+            </li>
+            <li>
+              <strong>Korea Advanced Institute of Science and Technology (KAIST)</strong><br>
+              <i>September 2021 - August 2023</i><br>
+              M.S. in Artificial Intelligence<br>
+              Advisor: Prof. Edward Choi
+            </li>
+            <li>
+              <strong>Ewha Womans University</strong><br>
+              <i>March 2017 - August 2021</i><br>
+              B.S. in Mechanical and Biomedical Engineering
+            </li>
+          </ul>
+        </div>
+
+        <div class="about-section academic-activities-section">
+          <h2>Academic Activities</h2>
+          <ul>
+            <li style="font-size: 0.8em;">
+              <a href="https://atweek.org/" target="_blank">ATW 2025</a> Oral Presentation (Nov 2025)<br>
+              Presentation title: Development of an Automated Tacrolimus Dosing Model Using Machine Learning in Kidney Transplant Recipients
+            </li>
+            <li>
+              <a href="https://www.kosaim.org/html/" target="_blank">KoSAIM</a> Summer School Hands-on Session: Chest X-ray Classification using CNN (Aug 2024)
+            </li>
+            <li>
+              <a href="https://www.kosaim.org/html/" target="_blank">KoSAIM</a> Summer School Hands-on Session: Chest X-ray Classification using CNN (Aug 2023)
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
   </div>
-</div>
+
+  <div class="footer">
+    <div class="container">
+      <p style="text-align: center; color: #777; font-size: 0.85em; margin: 0; padding: 1rem 0;">
+        Theme based on <a href="https://github.com/brianmaierjr/long-haul" target="_blank" style="color: #777; text-decoration: underline;">Long Haul</a> by Brian Maier Jr.
+      </p>
+    </div>
+  </div>
+</body>
+</html>
+
