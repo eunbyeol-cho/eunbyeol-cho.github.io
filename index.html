@@ -10,6 +10,18 @@
   <link rel="stylesheet" href="/assets/css/style.css">
 
   <style>
+    /* Force white background always */
+    body {
+      background-color: #fff !important;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      body {
+        background-color: #fff !important;
+        color: #111 !important;
+      }
+    }
+
     /* Header & navigation layout fix */
     .header .container {
       display: flex;
