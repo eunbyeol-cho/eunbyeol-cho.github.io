@@ -108,7 +108,7 @@
 
     .about-header {
       display: flex;
-      align-items: stretch; /* 이미지 높이를 텍스트 영역과 맞추기 위해 stretch 사용 */
+      align-items: center;
       gap: 3rem;
       margin-bottom: 2rem;
       padding-bottom: 2rem;
@@ -117,7 +117,8 @@
 
     .about-photo {
       flex-shrink: 0;
-      width: 165px; /* 가로는 고정, 세로는 텍스트에 맞춰 자동 조절 */
+      width: 230px;
+      height: 230px; /* 정사각형 비율 유지 */
     }
 
     .about-photo img {
@@ -146,7 +147,7 @@
     }
 
     .about-intro .intro {
-      font-size: 1em;
+      font-size: 0.8em;
       line-height: 1.6;
       color: #333;
       margin-bottom: 1rem;
@@ -232,7 +233,8 @@
     /* Common style for all three sections - unified bullet list style */
     .about-section.publication-section ul,
     .about-section.education-section ul,
-    .about-section.academic-activities-section ul {
+    .about-section.academic-activities-section ul,
+    .about-section.undergraduate-section ul {
       list-style: disc;
       padding-left: 1.2rem;
       margin: 0;
@@ -240,7 +242,8 @@
 
     .about-section.publication-section ul li,
     .about-section.education-section ul li,
-    .about-section.academic-activities-section ul li {
+    .about-section.academic-activities-section ul li,
+    .about-section.undergraduate-section ul li {
       margin-bottom: 1rem;
       padding-left: 0.2rem;
       font-size: 0.85em;
@@ -310,7 +313,8 @@
 
     /* Education and Academic Activities content styling */
     .about-section.education-section ul li strong,
-    .about-section.academic-activities-section ul li strong {
+    .about-section.academic-activities-section ul li strong,
+    .about-section.undergraduate-section ul li strong {
       font-size: 1em;
     }
 
@@ -407,15 +411,17 @@
       <div class="about-container">
         <div class="about-header">
           <div class="about-photo">
-            <img src="/assets/img/profile.jpeg?v=1" alt="Eunbyeol Cho">
+            <img src="/assets/img/profile.jpeg?v=2" alt="Eunbyeol Cho">
           </div>
           <div class="about-intro">
             <h1>Eunbyeol Cho</h1>
             <p class="intro">
               I am a Ph.D. student at
-              <a href="https://gsai.kaist.ac.kr">KAIST Graduate School of AI</a>
+              <a href="https://gsai.kaist.ac.kr">KAIST Graduate School of AI</a>,
               advised by <a href="https://mp2893.com">Professor Edward Choi</a>.
-              My research interests lie in the areas of Healthcare AI and Natural Language Processing.
+              My research interests lie in Healthcare AI and Natural Language Processing.
+              I am particularly interested in EHR data synthesis, including its practical utility, evaluation,
+              and the hallucination behavior of generative models.
             </p>
             <div class="profile-links">
               <a href="https://scholar.google.com/citations?user=AzMWzQoAAAAJ" target="_blank">
@@ -603,12 +609,49 @@
         <div class="about-section academic-activities-section">
           <h2>Academic Activities</h2>
           <ul>
-            <li style="font-size: 0.8em;">
-              <a href="https://atweek.org/" target="_blank">ATW 2025</a> Oral Presentation (Nov 2025)<br>
+            <li>
+              <strong><a href="https://atweek.org/" target="_blank">ATW 2025</a> Oral Presentation</strong> (Nov 2025)<br>
               Presentation title: Development of an Automated Tacrolimus Dosing Model Using Machine Learning in Kidney Transplant Recipients
             </li>
             <li>
-              <a href="https://www.kosaim.org/html/" target="_blank">KoSAIM</a> Summer School Hands-on Session Instructor: Chest X-ray Classification using CNN (Aug 2023, 2024)
+              <strong><a href="https://www.kosaim.org/html/" target="_blank">KoSAIM</a> Summer School Hands-on Session Instructor</strong> (Aug 2023, 2024)<br>
+              Topic: Chest X-ray Classification using CNN
+            </li>
+            <li>
+              <strong>AI Engineer at <a href="https://dentbird.kr/" target="_blank">ImagoWorks Inc.</a></strong> (Mar 2020 – Aug 2020)<br>
+              3D mesh segmentation for dental application
+            </li>
+            <li>
+              <strong>Research Intern at <a href="https://www.kist.re.kr/ko/index.do" target="_blank">KIST</a></strong> (Jan 2020 – Feb 2020)<br>
+              3D geometric deep learning for dental scan data<br>
+              Advisor: Youngjun Kim
+            </li>
+            <li>
+              <strong>Research Intern at <a href="https://jchoi315.cafe24.com/" target="_blank">Medical AI & CV Lab</a></strong> (July 2018 – 2021)<br>
+              CNN-based lesion detection and medical image quality assessment<br>
+              Advisor: Jang-Hwan Choi
+            </li>
+          </ul>
+        </div>
+
+        <div class="about-section undergraduate-section">
+          <h2>Honors & Scholarships</h2>
+          <ul>
+            <li>
+              <strong>1st Prize in Graduation Project & Capstone Design Competition Award</strong> (2020)<br>
+              Developed an AI-based smart mirror for stroke rehabilitation.
+            </li>
+            <li>
+              <strong>2nd Prize in KU Medical Hackathon</strong> (2019)<br>
+              Proposed an AI Psychological Analysis System for mental illness management.
+            </li>
+            <li>
+              <strong>Academic Excellence Scholarships</strong> (2017 – 2021)<br>
+              Received scholarships three times for outstanding academic performance.
+            </li>
+            <li>
+              <strong>Scholarship for International Program, Germany</strong> (Jan 2018)<br>
+              Participated in hands-on experience on Health Biomedical Engineering.
             </li>
           </ul>
         </div>
