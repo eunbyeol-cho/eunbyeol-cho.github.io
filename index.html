@@ -230,10 +230,11 @@
       content: none;
     }
 
-    /* Common style for all three sections - unified bullet list style */
+    /* Common style for all list-based sections - unified bullet list style */
     .about-section.publication-section ul,
     .about-section.education-section ul,
     .about-section.academic-activities-section ul,
+    .about-section.experience-section ul,
     .about-section.undergraduate-section ul {
       list-style: disc;
       padding-left: 1.2rem;
@@ -243,6 +244,7 @@
     .about-section.publication-section ul li,
     .about-section.education-section ul li,
     .about-section.academic-activities-section ul li,
+    .about-section.experience-section ul li,
     .about-section.undergraduate-section ul li {
       margin-bottom: 1rem;
       padding-left: 0.2rem;
@@ -311,9 +313,10 @@
       }
     }
 
-    /* Education and Academic Activities content styling */
+    /* Education, Academic Activities, and Experience content styling */
     .about-section.education-section ul li strong,
     .about-section.academic-activities-section ul li strong,
+    .about-section.experience-section ul li strong,
     .about-section.undergraduate-section ul li strong {
       font-size: 1em;
     }
@@ -420,7 +423,7 @@
               <a href="https://gsai.kaist.ac.kr">KAIST Graduate School of AI</a>,
               advised by <a href="https://mp2893.com">Professor Edward Choi</a>.
               My research interests lie in Healthcare AI and Natural Language Processing.
-              I am particularly interested in EHR data synthesis, including its practical utility, evaluation,
+              I am particularly interested in EHR data synthesis, including its real-world applications, evaluation,
               and the hallucination behavior of generative models.
             </p>
             <div class="profile-links">
@@ -617,6 +620,12 @@
               <strong><a href="https://www.kosaim.org/html/" target="_blank">KoSAIM</a> Summer School Hands-on Session Instructor</strong> (Aug 2023, 2024)<br>
               Topic: Chest X-ray Classification using CNN
             </li>
+          </ul>
+        </div>
+
+        <div class="about-section experience-section">
+          <h2>Experience</h2>
+          <ul>
             <li>
               <strong>AI Engineer at <a href="https://dentbird.kr/" target="_blank">ImagoWorks Inc.</a></strong> (Mar 2020 – Aug 2020)<br>
               3D mesh segmentation for dental application
